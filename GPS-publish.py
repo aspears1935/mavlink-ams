@@ -3,11 +3,14 @@
 # Import mavutil
 from pymavlink import mavutil
 import time
+from datetime import datetime
 
 # Create the connection
-master = mavutil.mavlink_connection('udpin:192.168.0.109:14550')
+master = mavutil.mavlink_connection('udpin:0.0.0.0:14550')
 # Wait a heartbeat before sending commands
-master.wait_heartbeat()
+#print("Waiting for heartbeat...")
+#master.wait_heartbeat()
+#print("Got heartbeat")
 
 # GPS_TYPE need to be MAV
 while True:
@@ -35,3 +38,4 @@ while True:
         0.05,       #GPS vertical accuracy in m
         7           #Number of satellites visible.
     )
+    print(time_week_ms)
